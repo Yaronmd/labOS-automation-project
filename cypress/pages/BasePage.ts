@@ -20,6 +20,16 @@ class BasePage {
           });
     }
 
+
+    getListOfTextsByXpath(selector: string): Cypress.Chainable<string[]> {
+        return cy.xpath(selector)
+            .should('exist')  // Ensure elements exist
+            .should('be.visible') // Ensure elements are visible
+            .then(($elements) => {
+                return Cypress._.map($elements, (el) => el.innerText.trim()); // Extract & trim text
+            });
+    }
+
 }
 
 export default BasePage;

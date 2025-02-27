@@ -21,6 +21,9 @@ describe("E2E Tests", () => {
     OrderPage.validatePatientLoadedWithText("Qa Patient")
     OrderPage.hoverFavoriteStarByNameAndValidateToolTip("Albumin","SST")
     OrderPage.clickCheckboxByName("Albumin")
+    OrderPage.validateItemAddToOrderList("109 - ALB")
+    OrderPage.clickSaveButton()
+    
 
   });
  

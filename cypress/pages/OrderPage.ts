@@ -2,11 +2,16 @@ import cypress = require("cypress");
 import 'cypress-xpath';
 import BasePage from "./BasePage";
 
+
 class OrderPage extends BasePage{
 
     private static readonly FACILITY = "Facility";
     private static readonly PHYSICIAN = "Physician";
     private static readonly PATIENT = "Patient by ID, first name, last name"
+
+    
+    private orderListItems = "//*[contains(@class,'st-selected-tests-container')]//*[contains(@class,'st-test-text')]"
+    private saveButtonPath = "#st-button-save"
     
     private getFieliedInputPath(by_input:string){
         return `//*[text()='${by_input}']//ancestor::label//parent::div//input`
@@ -57,7 +62,22 @@ class OrderPage extends BasePage{
          const checkboxPath = `//*[text()='${name}']//ancestor::mat-checkbox//input`
          cy.xpath(checkboxPath).click()
     }
+
+    validateItemAddToOrderList(name:string){
+        this.getListOfTextsByXpath(this.orderListItems)
+        .then((items) => {
+            cy.log("All extracted texts:", JSON.stringify(items));
+            const itemExists = items.some(item => item.trim() === name.trim());
+            cy.log("Item Exists:", itemExists);
+            expect(itemExists, `Expected "${name}" to be in ${JSON.stringify(items)}`).to.be.true;
+        });
+    }
+        
     
+    
+    clickSaveButton(){
+        cy.get(this.saveButtonPath).click()
+    }
   }
   
   export default new OrderPage();
