@@ -18,7 +18,7 @@ class OrderPage {
         cy.xpath(this.getFieliedInputPath(OrderPage.PATIENT)).type(input)
     }
     private selectFromDropdown(input:string){
-        const path = `//span[text()='${input}']`
+        const path = `//span[contains(text(),'${input}')]`
         cy.xpath(path).click()
     }
     searchAndSelectFacility(input:string){

@@ -10,12 +10,16 @@ describe("E2E Tests", () => {
       });
 
   it("Flow",()=>{
+    // naviagte to Order and validate url
     DashboardPage.interactWithMenu("Order")
     cy.url().should("include","/order")
 
+    // select Facility, Physician and Patient
     OrderPage.searchAndSelectFacility("QA Facility")
     OrderPage.validatePhysicianLoadedWithText("Dr. Hunter Atkinson (A98185)")
+    OrderPage.searchAndSelectPatient("Qa Patient")
 
+    
   });
  
 
