@@ -53,6 +53,10 @@ class OrderPage extends BasePage{
         this.hoverAndValidateTooltip(toolTipPath,expectedText)
 
     }
+    clickCheckboxByName(name: string){
+         const checkboxPath = `//*[text()='${name}']//ancestor::mat-checkbox//input`
+         cy.xpath(checkboxPath).click()
+    }
     
   }
   

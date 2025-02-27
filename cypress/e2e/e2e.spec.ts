@@ -20,6 +20,7 @@ describe("E2E Tests", () => {
     OrderPage.searchAndSelectPatient("Qa Patient")
     OrderPage.validatePatientLoadedWithText("Qa Patient")
     OrderPage.hoverFavoriteStarByNameAndValidateToolTip("Albumin","SST")
+    OrderPage.clickCheckboxByName("Albumin")
 
   });
  
