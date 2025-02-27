@@ -1,7 +1,8 @@
 import cypress = require("cypress");
 import 'cypress-xpath';
+import BasePage from "./BasePage";
 
-class OrderPage {
+class OrderPage extends BasePage{
 
     private static readonly FACILITY = "Facility";
     private static readonly PHYSICIAN = "Physician";
@@ -39,7 +40,19 @@ class OrderPage {
             cy.log("Extracted text: " + text);
           });
     }
-    
+    validatePatientLoadedWithText(input:string){
+        cy.xpath(this.getFieliedInputPath(OrderPage.PATIENT))
+          .invoke('val')  // Get the value of the input field
+          .should('contain', input)  // Assert the value is the one you're expecting
+          .then((text) => {
+            cy.log("Extracted text: " + text);
+          });
+    }
+    hoverFavoriteStarByNameAndValidateToolTip(name: string, expectedText?: string): void {
+        const toolTipPath = `//*[text()='${name}']//parent::div//span[@sttooltip]//parent::div`
+        this.hoverAndValidateTooltip(toolTipPath,expectedText)
+
+    }
     
   }
   

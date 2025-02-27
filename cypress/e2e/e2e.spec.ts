@@ -18,8 +18,9 @@ describe("E2E Tests", () => {
     OrderPage.searchAndSelectFacility("QA Facility")
     OrderPage.validatePhysicianLoadedWithText("Dr. Hunter Atkinson (A98185)")
     OrderPage.searchAndSelectPatient("Qa Patient")
+    OrderPage.validatePatientLoadedWithText("Qa Patient")
+    OrderPage.hoverFavoriteStarByNameAndValidateToolTip("Albumin","SST")
 
-    
   });
  
 
