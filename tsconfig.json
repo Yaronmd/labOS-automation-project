@@ -3,6 +3,10 @@
       "target": "ES6",
       "module": "CommonJS",
       "types": ["cypress"],
+      "typeRoots": [
+      "node_modules/@types",
+      "cypress/support"
+    ],
       "strict": true,
       "baseUrl": "./",
       "paths": {
