@@ -1,11 +1,13 @@
 import cypress = require("cypress");
 import 'cypress-xpath';
+import BasePage from "./BasePage";
 
-class LoginPage {
+class LoginPage extends BasePage{
     private baseUrl = "https://qa-candidates.labos.cloud/2/login"
 
     private commonInputPath = "//form//mat-form-field"
     private loginButton = "#st-button-login-enter";
+ 
     
     visit() {
       cy.visit(this.baseUrl);
@@ -29,6 +31,8 @@ class LoginPage {
       this.enterPassword(password);
       this.clickLogin();
     }
+
+ 
   }
   
   export default new LoginPage();

@@ -133,6 +133,18 @@ class OrderPage extends BasePage{
         cy.xpath(this.getFieliedInputPath(OrderPage.PATIENT)).should('be.empty');
         cy.xpath(this.getFieliedInputPath(OrderPage.PHYSICIAN)).should('be.empty');
     }
+
+    validateFiledsWarningHighliget(){
+       // Check the Facility field for invalid state and floating label red color
+        cy.xpath(this.getFieliedInputPath(OrderPage.FACILITY)).wait(500)
+        .should('have.css', '--mat-stepper-header-error-state-label-text-color', '#d20000');
+        
+        cy.xpath(this.getFieliedInputPath(OrderPage.PHYSICIAN)).wait(500)
+        .should('have.css', '--mat-stepper-header-error-state-label-text-color', '#d20000');
+        
+        cy.xpath(this.getFieliedInputPath(OrderPage.PATIENT)).wait(500)
+        .should('have.css', '--mat-stepper-header-error-state-label-text-color', '#d20000');
+    }
   }
   
   export default new OrderPage();

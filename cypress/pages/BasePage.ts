@@ -3,6 +3,7 @@ import 'cypress-xpath';
 
 class BasePage {
     private toolTipPath = "#st-tooltip"
+    private WarnningMessageGenralPath = "//*[contains(@id,'mat-mdc-error')]"
 
     hoverAndValidateTooltip(tooltipSelector: string, expectedText?: string) {
         cy.xpath(tooltipSelector).trigger("mouseover").wait(1000);
@@ -41,6 +42,26 @@ class BasePage {
         .invoke('text') // Extract text
         .then((text) => text.trim()); // Trim spaces for clean validation
     }
+
+    getListofWarningMessages(){
+        return cy.xpath(this.WarnningMessageGenralPath)
+        .then(($els) => {
+            // Create an array to store the text of each warning message
+            let warningMessages: string[] = [];
+            
+            // Iterate over each element and push its text into the array
+            $els.each((index, el) => {
+                warningMessages.push(el.innerText.trim());
+            });
+
+            // Log the warning messages
+            cy.log('Warning Messages:', warningMessages);
+
+            // Return the warning messages array using cy.wrap to chain further Cypress commands
+            return cy.wrap(warningMessages);
+        });
+    }
+    
 
 }
 

@@ -4,7 +4,7 @@ import OrderPage from "@pages/OrderPage";
 
 
 describe("E2E Tests", () => {
-    before(() => {
+    beforeEach(() => {
         LoginPage.visit();
         LoginPage.login("qa", "123");  // You can also add assertion here to ensure successful login
         // Optionally, save the cookies or session data here if you need
@@ -33,6 +33,19 @@ describe("E2E Tests", () => {
     // Valiate in response
     OrderPage.validateOrderResponseWithPopup()
     OrderPage.validateFiledsEmpty()
+    
+
+  });
+
+  it("Validate missing fields in Order page",()=>{
+    // naviagte to Order and validate url
+    DashboardPage.interactWithMenu("Order")
+    cy.url().should("include","/order")
+
+    // select Facility, Physician and Patient
+    OrderPage.validateFiledsEmpty()
+    OrderPage.clickSaveButton()
+    OrderPage.validateFiledsWarningHighliget()
     
 
   });
