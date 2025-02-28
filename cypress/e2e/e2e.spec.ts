@@ -1,6 +1,8 @@
 import LoginPage from "@pages/LoginPage";
 import DashboardPage from "@pages/DashboardPage";
 import OrderPage from "@pages/OrderPage";
+
+
 describe("E2E Tests", () => {
     before(() => {
         LoginPage.visit();
@@ -9,12 +11,13 @@ describe("E2E Tests", () => {
         cy.url().should("include", "/dashboard");  // Ensure you're redirected to dashboard after login
       });
 
-  it("Flow",()=>{
+  it("Order Creation and Validation",()=>{
     // naviagte to Order and validate url
     DashboardPage.interactWithMenu("Order")
     cy.url().should("include","/order")
 
     // select Facility, Physician and Patient
+    OrderPage.validateFiledsEmpty()
     OrderPage.searchAndSelectFacility("QA Facility")
     OrderPage.validatePhysicianLoadedWithText("Dr. Hunter Atkinson (A98185)")
     OrderPage.searchAndSelectPatient("Qa Patient")
@@ -22,7 +25,14 @@ describe("E2E Tests", () => {
     OrderPage.hoverFavoriteStarByNameAndValidateToolTip("Albumin","SST")
     OrderPage.clickCheckboxByName("Albumin")
     OrderPage.validateItemAddToOrderList("109 - ALB")
+    // listen to POST
+    OrderPage.interceptCreateOrder()
     OrderPage.clickSaveButton()
+    // Excrtact from UI
+    OrderPage.validateAndExtractOrderNumber()
+    // Valiate in response
+    OrderPage.validateOrderResponseWithPopup()
+    OrderPage.validateFiledsEmpty()
     
 
   });
