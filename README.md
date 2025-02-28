@@ -1,4 +1,4 @@
-Labos Automation Project
+#Labos Automation Project
 
 This project is built using [Cypress](https://www.cypress.io/) for end-to-end (E2E) automation testing.
 
