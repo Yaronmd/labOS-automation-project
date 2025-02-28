@@ -1,0 +1,26 @@
+# Node modules
+node_modules/
+package-lock.json
+
+# Cypress-related files
+cypress/videos/
+cypress/screenshots/
+cypress/downloads/
+
+# Cypress cache
+.cypress_cache/
+
+# Logs and environment files
+logs/
+.env
+*.log
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
