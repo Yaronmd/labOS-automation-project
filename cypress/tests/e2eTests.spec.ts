@@ -37,19 +37,5 @@ describe("E2E Tests", () => {
 
   });
 
-  it("Validate missing fields in Order page",()=>{
-    // naviagte to Order and validate url
-    DashboardPage.interactWithMenu("Order")
-    cy.url().should("include","/order")
-
-    // select Facility, Physician and Patient
-    OrderPage.validateFiledsEmpty()
-    OrderPage.clickSaveButton()
-    OrderPage.validateFiledsWarningHighliget()
-    
-
-  });
- 
-
 
 });

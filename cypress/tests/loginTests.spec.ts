@@ -2,7 +2,7 @@ import LoginPage from "@pages/LoginPage";
 import { it } from "mocha";
 
 
-describe("Login Functionality", () => {
+describe("Login Functionality tests", () => {
     beforeEach(() => {
         LoginPage.visit();
       });
