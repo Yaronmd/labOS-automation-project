@@ -30,14 +30,17 @@ Before setting up the project, ensure you have the following installed:
 ### E2E Tests
 
 - Order Creation and Validation
-- Validate missing fields in Order page
 
 ### Login Tests
 
 - Validate login without credentials
 - Validate login with incorrect credentials
 
+### Order Tests
 
+- Validate missing fields in Order page
+
+  
 
 ## Running Tests
 
