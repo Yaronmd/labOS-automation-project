@@ -29,7 +29,7 @@ Before setting up the project, ensure you have the following installed:
 
 ### E2E Tests
 
-- Order Creation and Validation
+- Order Creation and Validation - The test selects a facility, physician, and patient, adds an item to the order, submits the order while intercepting the request, extracts the order number from the UI, validates the response, and ensures fields are cleared.
 
 ### Login Tests
 
